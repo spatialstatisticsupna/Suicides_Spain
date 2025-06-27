@@ -1,6 +1,6 @@
 # Suicides_Spain
 
-This repository contains the data and R code to reproduce the analyses of the paper entitled *"Spatio-temporal analysis of suicide mortality rates in Spain: exploring sex, age, and socio-demographic disparities using Bayesian disease mapping models"* (Adin et al., 2024)
+This repository contains the data and R code to reproduce the analyses of the paper entitled *"Spatio-temporal analysis of suicide mortality rates in Spain: exploring sex, age, and socio-demographic disparities using Bayesian disease mapping models"* (Adin et al., 2025)
 
 ## Table of contents
 
@@ -10,7 +10,7 @@ This repository contains the data and R code to reproduce the analyses of the pa
 -   [Acknowledgements](#Acknowledgements)
 -   [References](#references)
 
-# Data {#data}
+# Data
 
 Sex- and age-specific suicide mortality counts (International Classification of Diseases-10 codes X60-X84), along with corresponding population data, stratified by year and province within continental Spain.
 
@@ -42,7 +42,7 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
     **Data source: [GISCO (Geographic Information System of the European Commission)](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/degree-urbanisation)**
 
-# R code {#r-code}
+# R code
 
 R code to reproduce all analyses presented in this paper, including the fitting of age–time and age–space interaction models using INLA (<http://www.r-inla.org/>), as well as the code to generate all figures and tables.
 
@@ -70,11 +70,11 @@ R code to reproduce all analyses presented in this paper, including the fitting 
 
     PENDIENTE
 
-# Supplementary Material {#supplementary-material}
+# Supplementary Material
 
 PENDIENTE
 
-# Acknowledgements {#acknowledgements}
+# Acknowledgements
 
 This work has been supported by projects PID2020-113125RB-I00/MCIN/AEI/10.13039/501100011033 (Spanish Ministry of Science and Innovation) and UNEDPAM/PI/PR24/01A (Centro Asociado UNED - Pamplona).
 
@@ -82,6 +82,6 @@ This work has been supported by projects PID2020-113125RB-I00/MCIN/AEI/10.13039/
 ![plot](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/UNED_Pamplona.jpg)
 
 
-# References {#references}
+# References
 
 PENDIENTE
