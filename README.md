@@ -14,7 +14,7 @@ This repository contains the data and R code to reproduce the analyses of the pa
 
 Sex- and age-specific suicide mortality counts (International Classification of Diseases-10 codes X60-X84), along with corresponding population data, stratified by year and province within continental Spain.
 
--   [**Suicides_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Suicides_Spain.Rdata)
+-   [**Suicides_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/raw/master/Data/Suicides_Spain.Rdata)
 
     This .Rdata file contains the following objects:
 
