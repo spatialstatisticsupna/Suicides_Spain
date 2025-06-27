@@ -14,7 +14,7 @@ This repository contains the data and R code to reproduce the analyses of the pa
 
 Sex- and age-specific suicide mortality counts (International Classification of Diseases-10 codes X60-X84), along with corresponding population data, stratified by year and province within continental Spain.
 
--   [**Suicides_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/raw/master/Data/Suicides_Spain.Rdata)
+-   [**Suicides_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Suicides_Spain.Rdata)
 
     This .Rdata file contains the following objects:
 
@@ -31,7 +31,7 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
     **Data source: INE (Spanish Statistical Office)**
 
--   [**DGURBA_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/data/DGURBA_Spain.Rdata)
+-   [**DGURBA_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/DGURBA_Spain.Rdata)
 
     This .Rdata file contains a `tibble` object with 8109 rows and 4 columns
 
@@ -46,27 +46,27 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
 R code to reproduce all analyses presented in this paper, including the fitting of age–time and age–space interaction models using INLA (<http://www.r-inla.org/>), as well as the code to generate all figures and tables.
 
--   [**1_DescriptiveAnalysis.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/R/1_DescriptiveAnalysis.R)
+-   [**1_DescriptiveAnalysis.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/1_DescriptiveAnalysis.R)
 
     Include description
 
--   [**2a_FitModels_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/R/2a_FitModels_AgeTime.R)
+-   [**2a_FitModels_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/2a_FitModels_AgeTime.R)
 
     Include description
 
--   [**2b_FitModels_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/R/2b_FitModels_AgeSpace.R)
+-   [**2b_FitModels_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/2b_FitModels_AgeSpace.R)
 
     Include description
 
--   [**3a_Results_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/R/3a_Results_AgeTime.R)
+-   [**3a_Results_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3a_Results_AgeTime.R)
 
     Include description
 
--   [**3b_Results_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/R/3b_Results_AgeSpace.R)
+-   [**3b_Results_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3b_Results_AgeSpace.R)
 
     Include description
 
--   [**4_EcologicalRegression.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/R/4_EcologicalRegression.R)
+-   [**4_EcologicalRegression.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4_EcologicalRegression.R)
 
     PENDIENTE
 
