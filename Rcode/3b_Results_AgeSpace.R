@@ -18,7 +18,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 #####################################
 ## Load data and cartography files ##
 #####################################
-load("Suicides_Spain.Rdata")
+load("../Data/Suicides_Spain.Rdata")
 print(Suicides)
 
 ## Set the observed and population data for the province of Madrid to NA for the years 2010–2012 ##
@@ -68,12 +68,13 @@ FinalModel.M <- MODELS.M$TypeIII
 FinalModel.F <- MODELS.F$TypeIII
 
 
-## Percentage of explained variability ##
+## Percentage of explained variability (MALES) ##
 var.age <- inla.emarginal(function(x) 1/x, FinalModel.M$marginals.hyperpar$`Precision for ID.age`)
 var.area <- inla.emarginal(function(x) 1/x, FinalModel.M$marginals.hyperpar$`Precision for ID.area`)
 var.inter <- inla.emarginal(function(x) 1/x, FinalModel.M$marginals.hyperpar$`Precision for ID.area.age`)
 round(100*c(var.age,var.area,var.inter)/(var.age+var.area+var.inter),1)
 
+## Percentage of explained variability (FEMALES) ##
 var.age <- inla.emarginal(function(x) 1/x, FinalModel.F$marginals.hyperpar$`Precision for ID.age`)
 var.area <- inla.emarginal(function(x) 1/x, FinalModel.F$marginals.hyperpar$`Precision for ID.area`)
 var.inter <- inla.emarginal(function(x) 1/x, FinalModel.F$marginals.hyperpar$`Precision for ID.area.age`)
@@ -128,7 +129,7 @@ Fig5a <- tm_shape(carto) +
                                             breaks=c(-Inf,9,11,12,15,Inf)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Estimated male mortality rates (per 100 000 inhabitants)", size=1.2) + 
+  tm_title(text="Spatial patterns of male mortality rates", size=1.2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig5b <- tm_shape(carto) +
@@ -146,7 +147,7 @@ Fig5c <- tm_shape(carto) +
                                             breaks=c(-Inf,3,3.5,4.5,5,Inf)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Estimated female mortality rates (per 100 000 inhabitants)", size=1.2) + 
+  tm_title(text="Spatial patterns of female mortality rates", size=1.2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig5d <- tm_shape(carto) +
@@ -159,7 +160,7 @@ Fig5d <- tm_shape(carto) +
   tm_options(component.autoscale = FALSE)
 
 Fig5 <- tmap_arrange(Fig5a, Fig5b, Fig5c, Fig5d, nrow=2, ncol=2)
-tmap_save(Fig5, filename="./Figures/PosteriorPatterns_SEXandPROVINCE.pdf", width=12, height=8)
+tmap_save(Fig5, filename="./Figures/Figure5.pdf", width=12, height=8)
 
 
 ###########################################################################
@@ -187,7 +188,7 @@ EST.rates <- bind_rows(do.call(rbind,rates.M.post) |>
 colors <- c("#ffffd9", "#c7e9b4", "#7fcdbb", "#225ea8", "#0c2c84")
 
 
-## Maps for MALE population ##
+## Maps of posterior median estimates for MALE population ##
 Maps <- vector("list",8)
 names(Maps) <- unique(EST.rates$Age)
 
@@ -211,10 +212,10 @@ Fig7 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
                      Maps[[5]],Maps[[6]],Maps[[7]],Maps[[8]],
                      nrow=3, ncol=3)
 
-tmap_save(Fig7, filename="./Figures/EstimatedRisks_AgeSpace_Males.pdf", width=12, height=8)
+tmap_save(Fig7, filename="./Figures/Figure7.pdf", width=12, height=8)
 
 
-## Maps for FEMALE population ##
+## Maps of posterior median estimates for FEMALE population ##
 Maps <- vector("list",8)
 names(Maps) <- unique(EST.rates$Age)
 
@@ -238,4 +239,74 @@ Fig8 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
                      Maps[[5]],Maps[[6]],Maps[[7]],Maps[[8]],
                      nrow=3, ncol=3)
 
-tmap_save(Fig8, filename="./Figures/EstimatedRisks_AgeSpace_Females.pdf", width=12, height=8)
+tmap_save(Fig8, filename="./Figures/Figure8.pdf", width=12, height=8)
+
+
+###############################################################
+## Figures S1/S2: Maps of posterior exceedance probabilities ##
+###############################################################
+
+## Maps of posterior exceedance probabilities for MALE population ##
+ages <- FinalModel.M$summary.lincomb.derived$mean[1:8]
+names(ages) <- unique(FinalModel.M$.args$data$Age)
+
+Maps <- vector("list",8)
+names(Maps) <- names(ages)
+
+colors <- c("#FEE5D9", "#FCAE91", "#FB6A4A", "#DE2D26", "#A50F15")
+
+for(i in names(ages)){
+  
+  loc <- which(FinalModel.M$.args$data$Age==i)
+  
+  carto <- Carto_SpainPROV
+  carto$Prob <- unlist(lapply(FinalModel.M$marginals.linear.predictor[loc], function(x) 1-inla.pmarginal(ages[i], x)))
+  
+  Maps[[i]] <- tm_shape(carto) +
+    tm_polygons(fill="Prob",
+                fill.scale=tm_scale_intervals(values=colors,
+                                              breaks=c(0,0.1,0.2,0.8,0.9,1)),
+                fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
+                                      position=tm_pos_out("right","center"))) +
+    tm_title(text=paste("Males: ",i)) + 
+    tm_options(component.autoscale = FALSE)
+}
+
+FigS1 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
+                      Maps[[5]],Maps[[6]],Maps[[7]],Maps[[8]],
+                      nrow=3, ncol=3)
+
+tmap_save(FigS1, filename="./Figures/FigureS1.pdf", width=12, height=8)
+
+
+## Maps of posterior exceedance probabilities for FEMALE population ##
+ages <- FinalModel.F$summary.lincomb.derived$mean[1:8]
+names(ages) <- unique(FinalModel.F$.args$data$Age)
+
+Maps <- vector("list",8)
+names(Maps) <- names(ages)
+
+colors <- c("#FEE5D9", "#FCAE91", "#FB6A4A", "#DE2D26", "#A50F15")
+
+for(i in names(ages)){
+  
+  loc <- which(FinalModel.F$.args$data$Age==i)
+  
+  carto <- Carto_SpainPROV
+  carto$Prob <- unlist(lapply(FinalModel.F$marginals.linear.predictor[loc], function(x) 1-inla.pmarginal(ages[i], x)))
+  
+  Maps[[i]] <- tm_shape(carto) +
+    tm_polygons(fill="Prob",
+                fill.scale=tm_scale_intervals(values=colors,
+                                              breaks=c(0,0.1,0.2,0.8,0.9,1)),
+                fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
+                                      position=tm_pos_out("right","center"))) +
+    tm_title(text=paste("Females: ",i)) + 
+    tm_options(component.autoscale = FALSE)
+}
+
+FigS2 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
+                      Maps[[5]],Maps[[6]],Maps[[7]],Maps[[8]],
+                      nrow=3, ncol=3)
+
+tmap_save(FigS2, filename="./Figures/FigureS2.pdf", width=12, height=8)

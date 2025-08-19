@@ -16,7 +16,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 #####################################
 ## Load data and cartography files ##
 #####################################
-load("Suicides_Spain.Rdata")
+load("../Data/Suicides_Spain.Rdata")
 print(Suicides)
 
 ## Set the observed and population data for the province of Madrid to NA for the years 2010–2012 ##
@@ -66,16 +66,19 @@ FinalModel.M <- MODELS.M$TypeII
 FinalModel.F <- MODELS.F$TypeIV
 
 
-## Percentage of explained variability ##
+## Percentage of explained variability (MALES) ##
 var.age <- inla.emarginal(function(x) 1/x, FinalModel.M$marginals.hyperpar$`Precision for ID.age`)
 var.time <- inla.emarginal(function(x) 1/x, FinalModel.M$marginals.hyperpar$`Precision for ID.year`)
 var.inter <- inla.emarginal(function(x) 1/x, FinalModel.M$marginals.hyperpar$`Precision for ID.year.age`)
 round(100*c(var.age,var.time,var.inter)/(var.age+var.time+var.inter),1)
+round(100*c(var.time,var.inter)/(var.time+var.inter),1)
 
+## Percentage of explained variability (FEMALES) ##
 var.age <- inla.emarginal(function(x) 1/x, FinalModel.F$marginals.hyperpar$`Precision for ID.age`)
 var.time <- inla.emarginal(function(x) 1/x, FinalModel.F$marginals.hyperpar$`Precision for ID.year`)
 var.inter <- inla.emarginal(function(x) 1/x, FinalModel.F$marginals.hyperpar$`Precision for ID.year.age`)
 round(100*c(var.age,var.time,var.inter)/(var.age+var.time+var.inter),1)
+round(100*c(var.time,var.inter)/(var.time+var.inter),1)
 
 
 #############################################################################
@@ -161,7 +164,7 @@ Fig4b <- ggplot(aux.YEAR, aes(x = Year)) +
         axis.title.y.right=element_text(angle=90))
 
 Fig4 <- ggarrange(Fig4a, Fig4b, nrow=1, ncol=2)
-ggsave("./Figures/PosteriorPatterns_SEXandYEAR.pdf", Fig4, width=12, height=6)
+ggsave("./Figures/Figure4.pdf", Fig4, width=12, height=6)
 
 
 ##################################################################
@@ -219,4 +222,4 @@ Fig6b <- ggplot(EST.rates |> filter(Sex=="Females"), aes(x=Year)) +
         legend.text=element_text(size=10))
 
 Fig6 <- ggarrange(Fig6a, Fig6b, nrow=1, ncol=2)
-ggsave("./Figures/EstimatedRisks_AgeTime.pdf", Fig6, width=12, height=6)
+ggsave("./Figures/Figure6.pdf", Fig6, width=12, height=6)

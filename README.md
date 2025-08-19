@@ -8,7 +8,7 @@ This repository contains the data and R code to reproduce the analyses of the pa
 -   [R code](#r-code)
 -   [Supplementary Material](#supplementary-material)
 -   [Acknowledgements](#Acknowledgements)
--   [References](#references)
+
 
 # Data
 
@@ -48,28 +48,33 @@ R code to reproduce all analyses presented in this paper, including the fitting 
 
 -   [**1_DescriptiveAnalysis.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/1_DescriptiveAnalysis.R)
 
-    Include description
+    Performs the descriptive analyses outlined in Section 2, including the generation of Figures 1–3 and Table 1.
 
 -   [**2a_FitModels_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/2a_FitModels_AgeTime.R)
 
-    Include description
+    Fits Bayesian hierarchical models that incorporate age–time interaction effects, as detailed in Section 3.1.
 
 -   [**2b_FitModels_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/2b_FitModels_AgeSpace.R)
 
-    Include description
+    Fits Bayesian hierarchical models that incorporate age-space interaction effects, as detailed in Section 3.2.
 
 -   [**3a_Results_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3a_Results_AgeTime.R)
 
-    Include description
+    Performs model comparison and analyzes the estimated rates for age–time interaction models, including the generation of Table 3, Figure 4 and Figure 6.
 
 -   [**3b_Results_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3b_Results_AgeSpace.R)
 
-    Include description
+    Performs model comparison and analyzes the estimated rates for age-space interaction models, including the generation of Table 3, Figure 5, Figures 7-8 and Figures S1-S2.
 
--   [**4_EcologicalRegression.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4_EcologicalRegression.R)
+-   [**4a_EcologicalRegression_Spatial.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4a_EcologicalRegression_Spatial.R)
 
     PENDIENTE
 
+-   [**4b_EcologicalRegression_Temporal.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4a_EcologicalRegression_Temporal.R)
+
+    PENDIENTE
+    
+    
 # Supplementary Material
 
 PENDIENTE
@@ -83,7 +88,3 @@ This work has been supported by projects PID2020-113125RB-I00/MCIN/AEI/10.13039/
   <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/UNED_Pamplona.jpg" width="40%" />
 </p>
 
-
-# References
-
-PENDIENTE

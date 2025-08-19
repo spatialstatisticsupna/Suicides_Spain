@@ -15,7 +15,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 #####################################
 ## Load data and cartography files ##
 #####################################
-load("Suicides_Spain.Rdata")
+load("../Data/Suicides_Spain.Rdata")
 print(Suicides)
 
 ## Set the observed and population data for the province of Madrid to NA for the years 2010–2012 ##

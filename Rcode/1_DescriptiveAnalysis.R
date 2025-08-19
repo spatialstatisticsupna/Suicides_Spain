@@ -12,7 +12,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 ####################################
 ## Load data and cartography file ##
 ####################################
-load("Suicides_Spain.Rdata")
+load("../Data/Suicides_Spain.Rdata")
 print(Suicides)
 
 ## Set the observed and population data for the province of Madrid to NA for the years 2010–2012 ##
@@ -77,7 +77,7 @@ Fig1 <- ggplot(aux, aes(x=Age)) +
         axis.title.y.right=element_text(angle=90))
 
 plot(Fig1)
-ggsave("./Figures/CrudeRates_SEXandAGE.pdf", Fig1, width=12, height=8)
+ggsave("./Figures/Figure1.pdf", Fig1, width=12, height=8)
 
 
 ################################################################################
@@ -113,7 +113,7 @@ Fig2b <- tm_shape(carto |> filter(Sex=="Females")) +
   tm_options(component.autoscale = FALSE)
 
 Fig2 <- tmap_arrange(Fig2a, Fig2b, nrow=1, ncol=2)
-tmap_save(Fig2, filename="./Figures/CrudeRates_SEXandPROVINCE.pdf", width=12, height=5)
+tmap_save(Fig2, filename="./Figures/Figure2.pdf", width=12, height=5)
 
 
 ##########################################################################
@@ -136,6 +136,7 @@ aux.Females <- Suicides |>
             .groups = "drop") |> 
   mutate(Rate=O/Pop*1e+5, Age=NA)
 
+## Average annual increase ##
 100*((aux.Males$Rate[n.year]/aux.Males$Rate[1])^(1/(n.year))-1)
 100*((aux.Females$Rate[n.year]/aux.Females$Rate[1])^(1/(n.year))-1)
 
@@ -183,7 +184,7 @@ Fig3b <- ggplot(aux |> filter(Sex=="Females"),
         legend.text=element_text(size=10))
 
 Fig3 <- ggarrange(Fig3a, Fig3b, nrow=1, ncol=2)
-ggsave("./Figures/CrudeRates_SEXandYEAR.pdf", Fig3, width=12, height=6)
+ggsave("./Figures/Figure3.pdf", Fig3, width=12, height=6)
 
 
 #############################################################################################
@@ -193,7 +194,7 @@ ggsave("./Figures/CrudeRates_SEXandYEAR.pdf", Fig3, width=12, height=6)
 
 ## Classification of Spanish municipalities by degree of urbanisation (EUROSTAT)
 ## Urban=cities, and towns or suburbs / Rural=rural areas
-load("DGURBA_Spain.Rdata")
+load("../Data/DGURBA_Spain.Rdata")
 
 ## Calculate the percentage of the population living in rural areas at province level ##
 RuralAreas.PROV <- DGURBA_Spain |> 

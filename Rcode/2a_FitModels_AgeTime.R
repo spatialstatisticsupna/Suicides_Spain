@@ -14,7 +14,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 #####################################
 ## Load data and cartography files ##
 #####################################
-load("Suicides_Spain.Rdata")
+load("../Data/Suicides_Spain.Rdata")
 print(Suicides)
 
 ## Set the observed and population data for the province of Madrid to NA for the years 2010–2012 ##
@@ -49,9 +49,13 @@ sdunif="expression:
 ###############################
 ## Define precision matrices ##
 ###############################
-Dt <- diff(diag(n.year), differences=1)
-Rt <- as(t(Dt)%*%Dt, "Matrix")
-Rt <- INLA::inla.scale.model(Rt, constr=list(A=matrix(1,1,n.year), e=0))
+Dt1 <- diff(diag(n.year), differences=1)
+Rt1 <- as(t(Dt1)%*%Dt1, "Matrix")
+Rt1 <- INLA::inla.scale.model(Rt1, constr=list(A=matrix(1,1,n.year), e=0))
+
+Dt2 <- diff(diag(n.year), differences=2)
+Rt2 <- as(t(Dt2)%*%Dt2, "Matrix")
+Rt2 <- INLA::inla.scale.model(Rt2, constr=list(A=rbind(matrix(1,1,n.year),matrix(1:n.year,1,n.year)), e=c(0,0)))
 
 Da <- diff(diag(n.age), differences=1)
 Ra <- as(t(Da)%*%Da, "Matrix")
@@ -101,7 +105,7 @@ TypeI <- inla(f.TypeI, family="poisson", data=data.M, E=Pop,
               lincomb=c(age.pattern, time.pattern))
 
 ## Type II interaction ##
-R <- kronecker(Rt,Diagonal(n.age))
+R <- kronecker(Rt1,Diagonal(n.age))
 A.constr <- kronecker(matrix(1,1,n.year),Diagonal(n.age))
 A.constr <- as(A.constr[-1,],"matrix")
   
@@ -135,7 +139,7 @@ TypeIII <- inla(f.TypeIII, family="poisson", data=data.M, E=Pop,
                 lincomb=c(age.pattern, time.pattern))
 
 ## Type IV interaction ##
-R <- kronecker(Rt,Ra)
+R <- kronecker(Rt1,Ra)
 A1 <- kronecker(matrix(1,1,n.year),Diagonal(n.age))
 A2 <- kronecker(Diagonal(n.year),matrix(1,1,n.age))
 A.constr <- as(rbind(A1[-1,],A2[-1,]),"matrix")
@@ -189,7 +193,7 @@ TypeI <- inla(f.TypeI, family="poisson", data=data.F, E=Pop,
               lincomb=c(age.pattern, time.pattern))
 
 ## Type II interaction ##
-R <- kronecker(Rt,Diagonal(n.age))
+R <- kronecker(Rt2,Diagonal(n.age))
 A.constr <- kronecker(matrix(1,1,n.year),Diagonal(n.age))
 A.constr <- as(A.constr[-1,],"matrix")
 
@@ -223,7 +227,7 @@ TypeIII <- inla(f.TypeIII, family="poisson", data=data.F, E=Pop,
                 lincomb=c(age.pattern, time.pattern))
 
 ## Type IV interaction ##
-R <- kronecker(Rt,Ra)
+R <- kronecker(Rt2,Ra)
 A1 <- kronecker(matrix(1,1,n.year),Diagonal(n.age))
 A2 <- kronecker(Diagonal(n.year),matrix(1,1,n.age))
 A.constr <- as(rbind(A1[-1,],A2[-1,]),"matrix")
