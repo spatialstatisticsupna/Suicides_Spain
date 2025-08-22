@@ -6,7 +6,6 @@ This repository contains the data and R code to reproduce the analyses of the pa
 
 -   [Data](#data)
 -   [R code](#r-code)
--   [Supplementary Material](#supplementary-material)
 -   [Acknowledgements](#Acknowledgements)
 
 
@@ -42,6 +41,35 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
     **Data source: [GISCO (Geographic Information System of the European Commission)](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/degree-urbanisation)**
 
+-   [**Unemployment.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Unemployment.Rdata)
+
+    The object `Unemployment.PROV.S` has 94 rows and 3 columns:
+    
+    -   `Sex`: factor with 2 levels ("Males" and "Females")
+    -   `PROV`: character vector representing province identifiers
+    -   `U.Rate`: average unemployment rate (%) between 2010 and 2022
+    
+    The object `Unemployment.PROV.ST` has 1222 rows and 4 columns:
+    
+    -   `Sex`: factor with 2 levels ("Males" and "Females")
+    -   `PROV`: character vector representing province identifiers
+    -   `Year`: character vector indicating the year (2010-2022)
+    -   `U.Rate`: annual unemployment rate (%)
+    
+    **Data source: INE (Spanish Statistical Office)**
+    
+-   [**Poverty.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Poverty.Rdata)
+
+    The object `Poverty.TA` has 104 rows and 4 columns:
+
+    -   `Sex`: factor with 2 levels ("Males" and "Females")
+    -   `Age`: character vector indicating age groups ("16-29", "30-44", "45-64", and "65+")
+    -   `Year`: character vector indicating the year (2010-2022)
+    -   `Rate`: annual at-risk-of-poverty rate (%)
+    
+    **Data source: INE (Spanish Statistical Office)**
+    
+    
 # R code
 
 R code to reproduce all analyses presented in this paper, including the fitting of age–time and age–space interaction models using INLA (<http://www.r-inla.org/>), as well as the code to generate all figures and tables.
@@ -68,16 +96,12 @@ R code to reproduce all analyses presented in this paper, including the fitting 
 
 -   [**4a_EcologicalRegression_Spatial.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4a_EcologicalRegression_Spatial.R)
 
-    PENDIENTE
+    Fits ecological regression model under the simplified spatial+ appproach to address confounding for spatial covariates.
 
--   [**4b_EcologicalRegression_Temporal.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4a_EcologicalRegression_Temporal.R)
+-   [**4b_EcologicalRegression_Temporal.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4b_EcologicalRegression_Temporal.R)
 
-    PENDIENTE
+    Fits ecological regression model under the simplified spatial+ appproach to address confounding for temporal covariates.
     
-    
-# Supplementary Material
-
-PENDIENTE
 
 # Acknowledgements
 

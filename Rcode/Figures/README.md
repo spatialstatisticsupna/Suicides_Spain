@@ -8,5 +8,7 @@
 -  Figure6: Temporal evolution of posterior median estimates and 95% credible intervals of suicide mortality rates by age group.
 -  Figure7: Maps of posterior median estimates of male suicide mortality rates by age group.
 -  Figure8: Maps of posterior median estimates of female suicide mortality rates by age group.
+-  Figure9: Spatial distribution of percentage of the population living in rural areas (left) and unemployment rate for males (center) and females (right).
+-  Figure10: Sex specific temporal trends in the annual unemployment rate (left) and the at-risk-of-poverty rate (right).
 -  FigureS1: Maps of posterior exceedance probabilities for male population.
 -  FigureS2: Maps of posterior exceedance probabilities for female population. 
