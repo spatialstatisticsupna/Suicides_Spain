@@ -121,7 +121,7 @@ Fig4a <- ggplot(aux.AGE, aes(x = Age)) +
   geom_ribbon(aes(ymin=`0.025quant`, ymax=`0.975quant`, group=Sex, fill=Sex), alpha=0.4) +
   geom_line(aes(y=`0.5quant`, color=Sex, group=Sex), linewidth=0.8) + 
   scale_y_continuous(
-    name = "Estimated mortality rates (per 100,000 inhabitants)",
+    name = "Mortality rates (per 100,000 inhabitants)",
     expand = c(0,0),
     limits = c(0,41)
   ) +
@@ -149,7 +149,7 @@ Fig4b <- ggplot(aux.YEAR, aes(x = Year)) +
   geom_ribbon(aes(ymin=`0.025quant`, ymax=`0.975quant`, group=Sex, fill=Sex), alpha=0.4) +
   geom_line(aes(y=`0.5quant`, color=Sex, group=Sex), linewidth=0.8) + 
   scale_y_continuous(
-    name = "Estimated mortality rates (per 100,000 inhabitants)",
+    name = "Mortality rates (per 100,000 inhabitants)",
     expand = c(0,0),
     limits = c(0,15)
   ) +
@@ -194,7 +194,7 @@ Fig6a <- ggplot(EST.rates |> filter(Sex=="Males"), aes(x=Year)) +
               alpha=0.4, show.legend=FALSE) +
   geom_line(aes(y=`0.5quant`, color=Age, group=Age), linewidth=0.8) + 
   xlab("Year") + 
-  ylab("Estimated mortality rates (per 100,000 inhabitants)") +
+  ylab("Mortality rates (per 100,000 inhabitants)") +
   ggtitle("Male population") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
@@ -210,7 +210,7 @@ Fig6b <- ggplot(EST.rates |> filter(Sex=="Females"), aes(x=Year)) +
               alpha=0.4, show.legend=FALSE) +
   geom_line(aes(y=`0.5quant`, color=Age, group=Age), linewidth=0.8) + 
   xlab("Year") + 
-  ylab("Estimated mortality rates (per 100,000 inhabitants)") +
+  ylab("Mortality rates (per 100,000 inhabitants)") +
   ggtitle("Female population") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
