@@ -92,7 +92,7 @@ R code to reproduce all analyses presented in this paper, including the fitting 
 
 -   [**3b_Results_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3b_Results_AgeSpace.R)
 
-    Performs model comparison and analyzes the estimated rates for age-space interaction models (Section 4.1), including the generation of Table 3, Figure 5, Figures 7-8 and Figures S1-S2.
+    Performs model comparison and analyzes the estimated rates for age-space interaction models (Section 4.1), including the generation of Table 3, Figure 5, Figures 7-8 and Figures S2-S3.
 
 -   [**4a_EcologicalRegression_Spatial.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4a_EcologicalRegression_Spatial.R)
 

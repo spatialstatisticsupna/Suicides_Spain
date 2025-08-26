@@ -36,6 +36,17 @@ Suicides |>
   mutate(Rate=O/Pop*1e+5)
 
 
+###########################################################################
+## Figure S1: Map with the administrative division of Spain by provinces ##
+###########################################################################
+FigS1 <- tm_shape(Carto_SpainPROV) + 
+  tm_polygons(fill="lavender") + 
+  tm_text(text="Name", size=0.8, fontface=2)
+
+print(FigS1)
+tmap_save(FigS1, filename="./Figures/FigureS1.pdf", width=12, height=8)
+
+
 #################################################################################
 ## Figure 1: Average annual number of suicide deaths and crude mortality rates ##
 ##           by age group and sex in continental Spain, 2010-2022              ##

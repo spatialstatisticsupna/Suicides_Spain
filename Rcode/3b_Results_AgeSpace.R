@@ -243,7 +243,7 @@ tmap_save(Fig8, filename="./Figures/Figure8.pdf", width=12, height=8)
 
 
 ###############################################################
-## Figures S1/S2: Maps of posterior exceedance probabilities ##
+## Figures S2/S3: Maps of posterior exceedance probabilities ##
 ###############################################################
 
 ## Maps of posterior exceedance probabilities for MALE population ##
@@ -272,11 +272,11 @@ for(i in names(ages)){
     tm_options(component.autoscale = FALSE)
 }
 
-FigS1 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
+FigS2 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
                       Maps[[5]],Maps[[6]],Maps[[7]],Maps[[8]],
                       nrow=3, ncol=3)
 
-tmap_save(FigS1, filename="./Figures/FigureS1.pdf", width=12, height=8)
+tmap_save(FigS2, filename="./Figures/FigureS2.pdf", width=12, height=8)
 
 
 ## Maps of posterior exceedance probabilities for FEMALE population ##
@@ -305,8 +305,8 @@ for(i in names(ages)){
     tm_options(component.autoscale = FALSE)
 }
 
-FigS2 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
+FigS3 <- tmap_arrange(Maps[[1]],Maps[[2]],Maps[[3]],Maps[[4]],
                       Maps[[5]],Maps[[6]],Maps[[7]],Maps[[8]],
                       nrow=3, ncol=3)
 
-tmap_save(FigS2, filename="./Figures/FigureS2.pdf", width=12, height=8)
+tmap_save(FigS3, filename="./Figures/FigureS3.pdf", width=12, height=8)
