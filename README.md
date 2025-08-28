@@ -1,6 +1,6 @@
 # Suicides_Spain
 
-This repository contains the data and R code to reproduce the analyses of the paper entitled *"Spatio-temporal analysis of suicide mortality rates in Spain: exploring sex, age, and socio-demographic disparities using Bayesian disease mapping models"* (Adin et al., 2025)
+This repository contains the data and R code to reproduce the analyses of the paper entitled *"Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors"* (Adin et al., 2025)
 
 ## Table of contents
 
