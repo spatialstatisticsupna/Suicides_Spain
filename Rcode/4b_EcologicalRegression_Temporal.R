@@ -275,29 +275,42 @@ aux <- Data |>
 
 print(aux)
 
+## Auxiliary function ##
+interpret_beta <- function(beta.marginal=NULL, c=NULL, sd=NULL){
+  beta.transform <- inla.tmarginal(function(x) exp(c*x/sd), beta.marginal)
+  res <- inla.qmarginal(c(0.5,0.025,0.975), beta.transform)
+  names(res) <- c("mean","0.025quant","0.975quant")
+  
+  return(res)
+}
+
 
 ## Null model 
 ##############
-Null <- list(Males=rbind(exp(2/aux[aux$Sex=="Males",]$SD.URate*Null.M$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")]),
-                         exp(2/aux[aux$Sex=="Males",]$SD.PRate*Null.M$summary.fixed["P.Rate",c("mean","0.025quant","0.975quant")])),
-             Females=rbind(exp(2/aux[aux$Sex=="Females",]$SD.URate*Null.F$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")]),
-                           exp(2/aux[aux$Sex=="Females",]$SD.PRate*Null.F$summary.fixed["P.Rate",c("mean","0.025quant","0.975quant")])))
+Null <- list(Males=rbind(interpret_beta(Null.M$marginals.fixed$U.Rate, c=1, sd=aux[aux$Sex=="Males",]$SD.URate),
+                         interpret_beta(Null.M$marginals.fixed$P.Rate, c=1, sd=aux[aux$Sex=="Males",]$SD.PRate)),
+             Females=rbind(interpret_beta(Null.F$marginals.fixed$U.Rate, c=1, sd=aux[aux$Sex=="Females",]$SD.URate),
+                           interpret_beta(Null.F$marginals.fixed$P.Rate, c=1, sd=aux[aux$Sex=="Females",]$SD.PRate)))
 
-lapply(Null, function(x) round(x,3))
-
-
-## Type II/IV model 
-####################
-Interaction <- list(Males=rbind(exp(2/aux[aux$Sex=="Males",]$SD.URate*TypeII.M$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")]),
-                                exp(2/aux[aux$Sex=="Males",]$SD.PRate*TypeII.M$summary.fixed["P.Rate",c("mean","0.025quant","0.975quant")])),
-                    Females=rbind(exp(2/aux[aux$Sex=="Females",]$SD.URate*TypeIV.F$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")]),
-                                  exp(2/aux[aux$Sex=="Females",]$SD.PRate*TypeIV.F$summary.fixed["P.Rate",c("mean","0.025quant","0.975quant")])))
-
-lapply(Interaction, function(x) round(x,3))
+lapply(Null, function(x){
+  rownames(x) <- c("U.Rate","P.Rate")
+  round(x,3)
+})
 
 
 ## Spatial+ model 
 ##################
+SpatialPlus <- list(Males=rbind(interpret_beta(SpatialPlus.M$marginals.fixed$U.Rate, c=1, sd=aux[aux$Sex=="Males",]$SD.URate),
+                                interpret_beta(SpatialPlus.M$marginals.fixed$P.Rate, c=1, sd=aux[aux$Sex=="Males",]$SD.PRate)),
+                    Females=rbind(interpret_beta(SpatialPlus.F$marginals.fixed$U.Rate, c=1, sd=aux[aux$Sex=="Females",]$SD.URate),
+                                  interpret_beta(SpatialPlus.F$marginals.fixed$P.Rate, c=1, sd=aux[aux$Sex=="Females",]$SD.PRate)))
+
+lapply(SpatialPlus, function(x){
+  rownames(x) <- c("U.Rate","P.Rate")
+  round(x,3)
+})
+
+
 SpatialPlus <- list(Males=rbind(exp(1/aux[aux$Sex=="Males",]$SD.URate*SpatialPlus.M$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")]),
                                 exp(1/aux[aux$Sex=="Males",]$SD.PRate*SpatialPlus.M$summary.fixed["P.Rate",c("mean","0.025quant","0.975quant")])),
                     Females=rbind(exp(1/aux[aux$Sex=="Females",]$SD.URate*SpatialPlus.F$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")]),
@@ -305,8 +318,8 @@ SpatialPlus <- list(Males=rbind(exp(1/aux[aux$Sex=="Males",]$SD.URate*SpatialPlu
 
 lapply(SpatialPlus, function(x) round(x,3))
 
-# A one percentage point increase in annual unemployment rate is associated with a 2.4\% increase in female suicide mortality
-# rate ratio: 1.024; 95\% credible interval: [1.004, 1.045]
+# A one percentage point increase in annual unemployment rate is associated with a 2.4% increase in female suicide mortality
+# rate ratio: 1.024; 95% credible interval: [1.004, 1.045]
 
 # A weaker and more uncertain effect is estimated for males
-# rate ratio: 1.015; 95% redible interval: [1.000, 1.031])
+# rate ratio: 1.015; 95% credible interval: [1.000, 1.031]

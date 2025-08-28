@@ -255,29 +255,45 @@ aux <- Data |>
             SD.URate=sd(U.Rate))
 print(aux)
 
+## Auxiliary function ##
+interpret_beta <- function(beta.marginal=NULL, c=NULL, sd=NULL){
+  beta.transform <- inla.tmarginal(function(x) exp(c*x/sd), beta.marginal)
+  res <- inla.qmarginal(c(0.5,0.025,0.975), beta.transform)
+  names(res) <- c("mean","0.025quant","0.975quant")
+  
+  return(res)
+}
+
 
 ## Null model 
 ##############
-Null <- list(Males=rbind(exp(10/aux[aux$Sex=="Males",]$SD.Rural_percent*Null.M$summary.fixed["Rural_percent",c("mean","0.025quant","0.975quant")]),
-                         exp(5/aux[aux$Sex=="Males",]$SD.URate*Null.M$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")])),
-             Females=rbind(exp(10/aux[aux$Sex=="Females",]$SD.Rural_percent*Null.F$summary.fixed["Rural_percent",c("mean","0.025quant","0.975quant")]),
-                           exp(5/aux[aux$Sex=="Females",]$SD.URate*Null.F$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")])))
+Null <- list(Males=rbind(interpret_beta(Null.M$marginals.fixed$Rural_percent, c=10, sd=aux[aux$Sex=="Males",]$SD.Rural_percent),
+                         interpret_beta(Null.M$marginals.fixed$U.Rate, c=5, sd=aux[aux$Sex=="Males",]$SD.URate)),
+             Females=rbind(interpret_beta(Null.F$marginals.fixed$Rural_percent, c=10, sd=aux[aux$Sex=="Females",]$SD.Rural_percent),
+                           interpret_beta(Null.F$marginals.fixed$U.Rate, c=5, sd=aux[aux$Sex=="Females",]$SD.URate)))
 
-lapply(Null, function(x) round(x,3))
+lapply(Null, function(x){
+  rownames(x) <- c("Rural_percent","U.Rate")
+  round(x,3)
+})
 
 
 ## Spatial+ model 
 ##################
-SpatialPlus <- list(Males=rbind(exp(10/aux[aux$Sex=="Males",]$SD.Rural_percent*SpatialPlus.M$summary.fixed["Rural_percent",c("mean","0.025quant","0.975quant")]),
-                                exp(5/aux[aux$Sex=="Males",]$SD.URate*SpatialPlus.M$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")])),
-                    Females=rbind(exp(10/aux[aux$Sex=="Females",]$SD.Rural_percent*SpatialPlus.F$summary.fixed["Rural_percent",c("mean","0.025quant","0.975quant")]),
-                                  exp(5/aux[aux$Sex=="Females",]$SD.URate*SpatialPlus.F$summary.fixed["U.Rate",c("mean","0.025quant","0.975quant")])))
+SpatialPlus <- list(Males=rbind(interpret_beta(SpatialPlus.M$marginals.fixed$Rural_percent, c=10, sd=aux[aux$Sex=="Males",]$SD.Rural_percent),
+                                interpret_beta(SpatialPlus.M$marginals.fixed$U.Rate, c=5, sd=aux[aux$Sex=="Males",]$SD.URate)),
+                    Females=rbind(interpret_beta(SpatialPlus.F$marginals.fixed$Rural_percent, c=10, sd=aux[aux$Sex=="Females",]$SD.Rural_percent),
+                                  interpret_beta(SpatialPlus.F$marginals.fixed$U.Rate, c=5, sd=aux[aux$Sex=="Females",]$SD.URate)))
 
-lapply(SpatialPlus, function(x) round(x,3))
+lapply(SpatialPlus, function(x){
+  rownames(x) <- c("Rural_percent","U.Rate")
+  round(x,3)
+})
+
 
 # For males, a 10 percentage point increase in the proportion of the population living in rural areas 
-# is associated with an estimated 5.4\% increase in suicide mortality
-# rate ratio: 1.054; 95\% credible interval: [1.022, 1.086]
+# is associated with an estimated 5.4% increase in suicide mortality
+# rate ratio: 1.054; 95% credible interval: [1.022, 1.086]
 
 # Among females, no meaningful association is detected, as the rate ratio remains close to one with wide uncertainty
-# rate ratio: 0.997; 95% redible interval: [0.955, 1.040])
+# rate ratio: 0.997; 95% credible interval: [0.955, 1.040]
