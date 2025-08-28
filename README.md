@@ -105,7 +105,7 @@ R code to reproduce all analyses presented in this paper, including the fitting 
 
 # Acknowledgements
 
-This work has been supported by projects PID2020-113125RB-I00/MCIN/AEI/10.13039/501100011033 (Spanish Ministry of Science and Innovation), PID2024-155382OB-I00 (funded by MICIU/AEI/10.13039/501100011033) and FEDER, UE) and UNEDPAM/PI/PR24/01A (Centro Asociado UNED - Pamplona).
+This work has been supported by projects PID2024-155382OB-I00 (funded by MICIU/AEI/10.13039/501100011033 and FEDER, UE), PID2020-113125RB-I00/MCIN/AEI/10.13039/501100011033 (Spanish Ministry of Science and Innovation), and UNEDPAM/PI/PR24/01A (Centro Asociado UNED - Pamplona).
 
 <p float="left">
   <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/micin-aei.jpg" width="49%" />
