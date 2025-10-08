@@ -68,7 +68,7 @@ Fig1 <- ggplot(aux, aes(x=Age)) +
            stat="identity", position="dodge", alpha=0.7, width=0.8) +
   geom_line(aes(y=Rate, color=RateLabel, group=RateLabel), linewidth=1.2) +
   scale_y_continuous(
-    name = "Mortality rate per 100,000 inhabitants",
+    name = "Suicide mortality rate per 100,000 inhabitants",
     expand = c(0,0),
     sec.axis = sec_axis(~./scale_factor, name="Number of deaths by year"),
     limits = c(0,40)
@@ -165,7 +165,7 @@ Fig3a <- ggplot(aux |> filter(Sex=="Males"),
             color="black", linewidth=1.2, linetype = "dashed",
             show.legend=FALSE) + 
   xlab("Year") + 
-  ylab("Mortality rates per 100,000 inhabitants") +
+  ylab("Suicide mortality rates per 100,000 inhabitants") +
   ggtitle("Male population") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
@@ -183,7 +183,7 @@ Fig3b <- ggplot(aux |> filter(Sex=="Females"),
             color="black", linewidth=1.2, linetype = "dashed",
             show.legend=FALSE) + 
   xlab("Year") + 
-  ylab("Mortality rates per 100,000 inhabitants") +
+  ylab("Suicide mortality rates per 100,000 inhabitants") +
   ggtitle("Female population") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
