@@ -1,12 +1,13 @@
 # Suicides_Spain
 
-This repository contains the data and R code to reproduce the analyses of the paper entitled *"Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors"* (Adin et al., 2025)
+This repository contains the data and R code to reproduce the analyses of the paper entitled *"Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors"* [(Adin et al., 2025)](https://arxiv.org/abs/2509.01342)
 
 ## Table of contents
 
 -   [Data](#data)
 -   [R code](#r-code)
 -   [Acknowledgements](#Acknowledgements)
+-   [References](#References)
 
 
 # Data
@@ -112,3 +113,6 @@ This work has been supported by projects PID2024-155382OB-I00 (funded by MICIU/A
   <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/UNED_Pamplona.jpg" width="40%" />
 </p>
 
+
+# References
+[Adin, A., Retegui, G., Sánchez Villegas, A., and Ugarte, M.D. (2025). Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors. *arXiv preprint*. https://doi.org/10.48550/arXiv.2509.01342](https://arxiv.org/abs/2509.01342)
