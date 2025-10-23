@@ -67,6 +67,7 @@ Fig9a <- tm_shape(carto) +
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_layout(panel.labels=c("Rural population (%)")) + 
+  tm_title(text="(a)", size=1.5) + 
   tm_options(component.autoscale = FALSE)
 
 Data <- Data |> 
@@ -90,6 +91,7 @@ Fig9b <- tm_shape(carto) +
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_layout(panel.labels=c("Unemployment rate (males)")) + 
+  tm_title(text="(b)", size=1.5) + 
   tm_options(component.autoscale = FALSE)
 
 Fig9c <- tm_shape(carto) +
@@ -97,6 +99,7 @@ Fig9c <- tm_shape(carto) +
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_layout(panel.labels=c("Unemployment rate (females)")) + 
+  tm_title(text="(c)", size=1.5) + 
   tm_options(component.autoscale = FALSE)
 
 Data <- Data |> 

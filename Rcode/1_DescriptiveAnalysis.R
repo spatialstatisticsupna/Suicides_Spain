@@ -111,7 +111,7 @@ Fig2a <- tm_shape(carto |> filter(Sex=="Males")) +
                                             breaks=c(-Inf,10,13,14,15,18,Inf)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Male mortality rates per 100,000 inhabitants") + 
+  tm_title(text="(a)", size=2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig2b <- tm_shape(carto |> filter(Sex=="Females")) +
@@ -120,7 +120,7 @@ Fig2b <- tm_shape(carto |> filter(Sex=="Females")) +
                                             breaks=c(-Inf,3,4,5,6,Inf)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Female mortality rates per 100,000 inhabitants") + 
+  tm_title(text="(b)", size=2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig2 <- tmap_arrange(Fig2a, Fig2b, nrow=1, ncol=2)
@@ -166,7 +166,7 @@ Fig3a <- ggplot(aux |> filter(Sex=="Males"),
             show.legend=FALSE) + 
   xlab("Year") + 
   ylab("Suicide mortality rates per 100,000 inhabitants") +
-  ggtitle("Male population") + 
+  ggtitle("(a)") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
   scale_y_continuous(expand=c(0,0.1), limits=c(0,50)) + 
@@ -174,7 +174,8 @@ Fig3a <- ggplot(aux |> filter(Sex=="Males"),
   theme_minimal(base_size=13) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="right",
-        legend.text=element_text(size=10))
+        legend.text=element_text(size=10),
+        plot.title=element_text(size=rel(2)))
 
 Fig3b <- ggplot(aux |> filter(Sex=="Females"),
                 aes(x=Year, y=Rate, colour=Age, group=Age)) + 
@@ -184,7 +185,7 @@ Fig3b <- ggplot(aux |> filter(Sex=="Females"),
             show.legend=FALSE) + 
   xlab("Year") + 
   ylab("Suicide mortality rates per 100,000 inhabitants") +
-  ggtitle("Female population") + 
+  ggtitle("(b)") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
   scale_y_continuous(expand=c(0,0.1), limits=c(0,8)) + 
@@ -192,7 +193,8 @@ Fig3b <- ggplot(aux |> filter(Sex=="Females"),
   theme_minimal(base_size=13) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="right",
-        legend.text=element_text(size=10))
+        legend.text=element_text(size=10),
+        plot.title=element_text(size=rel(2)))
 
 Fig3 <- ggarrange(Fig3a, Fig3b, nrow=1, ncol=2)
 ggsave("./Figures/Figure3.pdf", Fig3, width=12, height=6)

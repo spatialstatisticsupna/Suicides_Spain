@@ -120,6 +120,7 @@ aux.AGE <- Suicides |>
 Fig4a <- ggplot(aux.AGE, aes(x = Age)) +
   geom_ribbon(aes(ymin=`0.025quant`, ymax=`0.975quant`, group=Sex, fill=Sex), alpha=0.4) +
   geom_line(aes(y=`0.5quant`, color=Sex, group=Sex), linewidth=0.8) + 
+  ggtitle("(a)") + 
   scale_y_continuous(
     name = "Suicide mortality rates (per 100,000 inhabitants)",
     expand = c(0,0),
@@ -133,7 +134,9 @@ Fig4a <- ggplot(aux.AGE, aes(x = Age)) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="top",
         legend.text=element_text(size=14),
-        axis.title.y.right=element_text(angle=90))
+        axis.title.y.right=element_text(angle=90),
+        plot.title.position = "panel",
+        plot.title=element_text(size=rel(1.5), margin=margin(b=-20)))
 
 
 ## Plot of time patterns ##
@@ -148,6 +151,7 @@ aux.YEAR <- Suicides |>
 Fig4b <- ggplot(aux.YEAR, aes(x = Year)) +
   geom_ribbon(aes(ymin=`0.025quant`, ymax=`0.975quant`, group=Sex, fill=Sex), alpha=0.4) +
   geom_line(aes(y=`0.5quant`, color=Sex, group=Sex), linewidth=0.8) + 
+  ggtitle("(b)") + 
   scale_y_continuous(
     name = "Suicide mortality rates (per 100,000 inhabitants)",
     expand = c(0,0),
@@ -161,7 +165,9 @@ Fig4b <- ggplot(aux.YEAR, aes(x = Year)) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="top",
         legend.text=element_text(size=14),
-        axis.title.y.right=element_text(angle=90))
+        axis.title.y.right=element_text(angle=90),
+        plot.title.position = "panel",
+        plot.title=element_text(size=rel(1.5), margin=margin(b=-20)))
 
 Fig4 <- ggarrange(Fig4a, Fig4b, nrow=1, ncol=2)
 ggsave("./Figures/Figure4.pdf", Fig4, width=12, height=6)
@@ -195,7 +201,7 @@ Fig6a <- ggplot(EST.rates |> filter(Sex=="Males"), aes(x=Year)) +
   geom_line(aes(y=`0.5quant`, color=Age, group=Age), linewidth=0.8) + 
   xlab("Year") + 
   ylab("Suicide mortality rates (per 100,000 inhabitants)") +
-  ggtitle("Male population") + 
+  ggtitle("(a)") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
   scale_y_continuous(expand=c(0,0.1), limits=c(0,50)) + 
@@ -203,7 +209,8 @@ Fig6a <- ggplot(EST.rates |> filter(Sex=="Males"), aes(x=Year)) +
   theme_minimal(base_size=13) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="right",
-        legend.text=element_text(size=10))
+        legend.text=element_text(size=10),
+        plot.title=element_text(size=rel(2)))
 
 Fig6b <- ggplot(EST.rates |> filter(Sex=="Females"), aes(x=Year)) +
   geom_ribbon(aes(ymin=`0.025quant`, ymax=`0.975quant`, group=Age, fill=Age),
@@ -211,7 +218,7 @@ Fig6b <- ggplot(EST.rates |> filter(Sex=="Females"), aes(x=Year)) +
   geom_line(aes(y=`0.5quant`, color=Age, group=Age), linewidth=0.8) + 
   xlab("Year") + 
   ylab("Suicide mortality rates (per 100,000 inhabitants)") +
-  ggtitle("Female population") + 
+  ggtitle("(b)") + 
   scale_colour_discrete(name=NULL) + 
   scale_x_discrete(expand=c(0.01,0.01)) + 
   scale_y_continuous(expand=c(0,0.1), limits=c(0,8)) + 
@@ -219,7 +226,8 @@ Fig6b <- ggplot(EST.rates |> filter(Sex=="Females"), aes(x=Year)) +
   theme_minimal(base_size=13) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="right",
-        legend.text=element_text(size=10))
+        legend.text=element_text(size=10),
+        plot.title=element_text(size=rel(2)))
 
 Fig6 <- ggarrange(Fig6a, Fig6b, nrow=1, ncol=2)
 ggsave("./Figures/Figure6.pdf", Fig6, width=12, height=6)

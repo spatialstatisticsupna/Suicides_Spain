@@ -129,7 +129,7 @@ Fig5a <- tm_shape(carto) +
                                             breaks=c(-Inf,9,11,12,15,Inf)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Spatial patterns of male mortality rates", size=1.2) + 
+  tm_title(text="(a)", size=2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig5b <- tm_shape(carto) +
@@ -138,7 +138,7 @@ Fig5b <- tm_shape(carto) +
                                             breaks=c(0,0.1,0.2,0.8,0.9,1)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Posterior exceedence probabilities for males", size=1.2) + 
+  tm_title(text="(b)", size=2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig5c <- tm_shape(carto) +
@@ -147,7 +147,7 @@ Fig5c <- tm_shape(carto) +
                                             breaks=c(-Inf,3,3.5,4.5,5,Inf)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Spatial patterns of female mortality rates", size=1.2) + 
+  tm_title(text="(c)", size=2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig5d <- tm_shape(carto) +
@@ -156,7 +156,7 @@ Fig5d <- tm_shape(carto) +
                                             breaks=c(0,0.1,0.2,0.8,0.9,1)),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
-  tm_title(text="Posterior exceedence probabilities for females", size=1.2) + 
+  tm_title(text="(d)", size=2) + 
   tm_options(component.autoscale = FALSE)
 
 Fig5 <- tmap_arrange(Fig5a, Fig5b, Fig5c, Fig5d, nrow=2, ncol=2)
@@ -192,6 +192,9 @@ colors <- c("#ffffd9", "#c7e9b4", "#7fcdbb", "#225ea8", "#0c2c84")
 Maps <- vector("list",8)
 names(Maps) <- unique(EST.rates$Age)
 
+titles <- c("(a)","(b)","(c)","(d)","(e)","(f)","(g)","(h)")
+names(titles) <- unique(EST.rates$Age)
+  
 for(i in names(Maps)){
   carto <- Carto_SpainPROV
   carto$Est.Rates <- EST.rates |> filter(Sex=="Males", Age==i) |> pull(`0.5quant`)
@@ -204,7 +207,7 @@ for(i in names(Maps)){
                 fill.scale=tm_scale_intervals(values=colors, breaks=breaks, labels=labels),
                 fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                       position=tm_pos_out("right","center"))) +
-    tm_title(text=paste("Males:",i)) + 
+    tm_title(text=titles[i], size=1.5) + 
     tm_options(component.autoscale = FALSE)
 }
 
@@ -219,6 +222,9 @@ tmap_save(Fig7, filename="./Figures/Figure7.pdf", width=12, height=8)
 Maps <- vector("list",8)
 names(Maps) <- unique(EST.rates$Age)
 
+titles <- c("(a)","(b)","(c)","(d)","(e)","(f)","(g)","(h)")
+names(titles) <- unique(EST.rates$Age)
+
 for(i in names(Maps)){
   carto <- Carto_SpainPROV
   carto$Est.Rates <- EST.rates |> filter(Sex=="Females", Age==i) |> pull(`0.5quant`)
@@ -231,7 +237,7 @@ for(i in names(Maps)){
                 fill.scale=tm_scale_intervals(values=colors, breaks=breaks, labels=labels),
                 fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                       position=tm_pos_out("right","center"))) +
-    tm_title(text=paste("Females: ",i)) + 
+    tm_title(text=titles[i], size=1.5) + 
     tm_options(component.autoscale = FALSE)
 }
 
