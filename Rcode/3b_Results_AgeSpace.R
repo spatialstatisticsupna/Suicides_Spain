@@ -126,7 +126,9 @@ colors2 <- c("#FEE5D9", "#FCAE91", "#FB6A4A", "#DE2D26", "#A50F15")
 Fig5a <- tm_shape(carto) +
   tm_polygons(fill="Est.Rates.Males",
               fill.scale=tm_scale_intervals(values=colors1,
-                                            breaks=c(-Inf,9,11,12,15,Inf)),
+                                            breaks=c(-Inf,9,11,12,15,Inf),
+                                            labels=c("Less than 9","9 to 11","11 to 12",
+                                                     "12 to 15","15 or more")),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_title(text="(a)", size=2) + 
@@ -135,7 +137,8 @@ Fig5a <- tm_shape(carto) +
 Fig5b <- tm_shape(carto) +
   tm_polygons(fill="Prob.Males",
               fill.scale=tm_scale_intervals(values=colors2,
-                                            breaks=c(0,0.1,0.2,0.8,0.9,1)),
+                                            breaks=c(0,0.1,0.2,0.8,0.9,1),
+                                            labels=c("0.0 to 0.1","0.1 to 0.2","0.2 to 0.8","0.8 to 0.9","0.9 to 1.0")),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_title(text="(b)", size=2) + 
@@ -144,7 +147,9 @@ Fig5b <- tm_shape(carto) +
 Fig5c <- tm_shape(carto) +
   tm_polygons(fill="Est.Rates.Females",
               fill.scale=tm_scale_intervals(values=colors1,
-                                            breaks=c(-Inf,3,3.5,4.5,5,Inf)),
+                                            breaks=c(-Inf,3,3.5,4.5,5,Inf),
+                                            labels=c("Less than 3.0","3.0 to 3.5","3.5 to 4.5",
+                                                     "4.5 to 5.0","5.0 or more")),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_title(text="(c)", size=2) + 
@@ -153,7 +158,8 @@ Fig5c <- tm_shape(carto) +
 Fig5d <- tm_shape(carto) +
   tm_polygons(fill="Prob.Females",
               fill.scale=tm_scale_intervals(values=colors2,
-                                            breaks=c(0,0.1,0.2,0.8,0.9,1)),
+                                            breaks=c(0,0.1,0.2,0.8,0.9,1),
+                                            labels=c("0.0 to 0.1","0.1 to 0.2","0.2 to 0.8","0.8 to 0.9","0.9 to 1.0")),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_title(text="(d)", size=2) + 

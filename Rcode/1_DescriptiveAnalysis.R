@@ -108,7 +108,9 @@ colors <- c("#ffffd9", "#c7e9b4", "#7fcdbb", "#1d91c0", "#225ea8", "#0c2c84")
 Fig2a <- tm_shape(carto |> filter(Sex=="Males")) +
   tm_polygons(fill="Rate",
               fill.scale=tm_scale_intervals(values=colors,
-                                            breaks=c(-Inf,10,13,14,15,18,Inf)),
+                                            breaks=c(-Inf,10,13,14,15,18,Inf),
+                                            labels=c("Less than 10","10 to 13","13 to 14",
+                                                     "14 to 15","15 to 18","18 or more")),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_title(text="(a)", size=2) + 
@@ -117,7 +119,9 @@ Fig2a <- tm_shape(carto |> filter(Sex=="Males")) +
 Fig2b <- tm_shape(carto |> filter(Sex=="Females")) +
   tm_polygons(fill="Rate",
               fill.scale=tm_scale_intervals(values=colors,
-                                            breaks=c(-Inf,3,4,5,6,Inf)),
+                                            breaks=c(-Inf,3,4,5,6,Inf),
+                                            labels=c("Less than 3","3 to 4","4 to 5",
+                                                     "5 to 6","6 or more")),
               fill.legend=tm_legend(title="", reverse=TRUE, frame=FALSE,
                                     position=tm_pos_out("right","center"))) +
   tm_title(text="(b)", size=2) + 
