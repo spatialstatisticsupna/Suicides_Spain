@@ -54,6 +54,7 @@ aux <- Unemployment.PROV.ST |>
 
 Fig10a <- ggplot(aux, aes(x=Year, y=U.Rate, color=Sex, group=Sex)) +
   geom_line(linewidth=0.8) +
+  ggtitle("(a)") + 
   xlab("Year") + 
   ylab("Unemployment rate (%)") +
   scale_color_manual(values=c("Males"="#4f81bd", "Females"="#d35400"), name=NULL) +
@@ -61,7 +62,9 @@ Fig10a <- ggplot(aux, aes(x=Year, y=U.Rate, color=Sex, group=Sex)) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="top",
         legend.text=element_text(size=14),
-        axis.title.y.right=element_text(angle=90))
+        axis.title.y.right=element_text(angle=90),
+        plot.title.position = "panel",
+        plot.title=element_text(size=rel(1.5), margin=margin(b=-20)))
 
 Data <- left_join(Data, aux, by=c("Sex","Year"))
 
@@ -78,6 +81,7 @@ aux <- Poverty.TA |>
 
 Fig10b <- ggplot(aux, aes(x=Year, y=P.Rate, color=Sex, group=Sex)) +
   geom_line(linewidth=0.8) +
+  ggtitle("(b)") + 
   xlab("Year") + 
   ylab("At risk of poverty rate (%)") +
   scale_color_manual(values=c("Males"="#4f81bd", "Females"="#d35400"), name=NULL) +
@@ -85,7 +89,9 @@ Fig10b <- ggplot(aux, aes(x=Year, y=P.Rate, color=Sex, group=Sex)) +
   theme(axis.text.x=element_text(angle=45, vjust=0.7),
         legend.position="top",
         legend.text=element_text(size=14),
-        axis.title.y.right=element_text(angle=90))
+        axis.title.y.right=element_text(angle=90),
+        plot.title.position = "panel",
+        plot.title=element_text(size=rel(1.5), margin=margin(b=-20)))
 
 Data <- left_join(Data, aux, by=c("Sex","Year"))
 
