@@ -115,4 +115,4 @@ This work has been supported by projects PID2024-155382OB-I00 (funded by MICIU/A
 
 
 # References
-[Adin, A., Retegui, G., Sánchez Villegas, A., and Ugarte, M.D. (2025). Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors. *arXiv preprint*. https://doi.org/10.48550/arXiv.2509.01342](https://arxiv.org/abs/2509.01342)
+[Adin, A., Retegui, G., Sánchez Villegas, A., and Ugarte, M.D. (2025). Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors. *International Journal of Health Geographics*, accepted. https://doi.org/10.1186/s12942-025-00441-7](https://doi.org/10.1186/s12942-025-00441-7)
