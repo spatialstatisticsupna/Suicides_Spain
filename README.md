@@ -113,6 +113,9 @@ This work has been supported by projects PID2024-155382OB-I00 (funded by MICIU/A
   <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/UNED_Pamplona.jpg" width="28%" />
 </p>
 
+<p float="left">
+  <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/micin-aei.jpg" width="70%" /> 
+</p>
 
 # References
 [Adin, A., Retegui, G., Sánchez Villegas, A., and Ugarte, M.D. (2026). Suicide Mortality in Spain (2010-2022): Temporal Trends, Spatial Patterns, and Risk Factors. *International Journal of Health Geographics*, 25, 5. https://doi.org/10.1186/s12942-025-00441-7](https://doi.org/10.1186/s12942-025-00441-7)
