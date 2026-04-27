@@ -114,7 +114,7 @@ This work has been supported by projects PID2024-155382OB-I00 (funded by MICIU/A
 </p>
 
 <p float="left">
-  <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/micin-aei.jpg" width="70%" /> 
+  <img src="https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/micin-aei.jpg" width="50%" /> 
 </p>
 
 # References
