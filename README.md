@@ -14,7 +14,7 @@ This repository contains the data and R code to reproduce the analyses of the pa
 
 Sex- and age-specific suicide mortality counts (International Classification of Diseases-10 codes X60-X84), along with corresponding population data, stratified by year and province within continental Spain.
 
--   [**Suicides_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Suicides_Spain.Rdata)
+-   [**Suicides_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Data/Suicides_Spain.Rdata)
 
     This .Rdata file contains the following objects:
 
@@ -31,7 +31,7 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
     **Data source: INE (Spanish Statistical Office)**
 
--   [**DGURBA_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/DGURBA_Spain.Rdata)
+-   [**DGURBA_Spain.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Data/DGURBA_Spain.Rdata)
 
     This .Rdata file contains a `tibble` object with 8109 rows and 4 columns
 
@@ -42,7 +42,7 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
     **Data source: [GISCO (Geographic Information System of the European Commission)](https://ec.europa.eu/eurostat/web/gisco/geodata/population-distribution/degree-urbanisation)**
 
--   [**Unemployment.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Unemployment.Rdata)
+-   [**Unemployment.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Data/Unemployment.Rdata)
 
     The object `Unemployment.PROV.S` has 94 rows and 3 columns:
     
@@ -59,7 +59,7 @@ Sex- and age-specific suicide mortality counts (International Classification of 
     
     **Data source: INE (Spanish Statistical Office)**
     
--   [**Poverty.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Data/Poverty.Rdata)
+-   [**Poverty.Rdata**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Data/Poverty.Rdata)
 
     The object `Poverty.TA` has 104 rows and 4 columns:
 
@@ -75,31 +75,31 @@ Sex- and age-specific suicide mortality counts (International Classification of 
 
 R code to reproduce all analyses presented in this paper, including the fitting of age–time and age–space interaction models using INLA (<http://www.r-inla.org/>), as well as the code to generate all figures and tables.
 
--   [**1_DescriptiveAnalysis.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/1_DescriptiveAnalysis.R)
+-   [**1_DescriptiveAnalysis.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/1_DescriptiveAnalysis.R)
 
     Performs the descriptive analyses outlined in Section 2, including the generation of Figures 1–3 and Table 1.
 
--   [**2a_FitModels_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/2a_FitModels_AgeTime.R)
+-   [**2a_FitModels_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/2a_FitModels_AgeTime.R)
 
     Fits Bayesian hierarchical models that incorporate age–time interaction effects, as detailed in Section 3.1.
 
--   [**2b_FitModels_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/2b_FitModels_AgeSpace.R)
+-   [**2b_FitModels_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/2b_FitModels_AgeSpace.R)
 
     Fits Bayesian hierarchical models that incorporate age-space interaction effects, as detailed in Section 3.2.
 
--   [**3a_Results_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3a_Results_AgeTime.R)
+-   [**3a_Results_AgeTime.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/3a_Results_AgeTime.R)
 
     Performs model comparison and analyzes the estimated rates for age–time interaction models (Section 4.1), including the generation of Table 3, Figure 4 and Figure 6.
 
--   [**3b_Results_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/3b_Results_AgeSpace.R)
+-   [**3b_Results_AgeSpace.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/3b_Results_AgeSpace.R)
 
     Performs model comparison and analyzes the estimated rates for age-space interaction models (Section 4.1), including the generation of Table 3, Figure 5, Figures 7-8 and Figures S2-S3.
 
--   [**4a_EcologicalRegression_Spatial.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4a_EcologicalRegression_Spatial.R)
+-   [**4a_EcologicalRegression_Spatial.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/4a_EcologicalRegression_Spatial.R)
 
     Fits ecological regression model under the simplified spatial+ appproach to address confounding for spatial covariates.
 
--   [**4b_EcologicalRegression_Temporal.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/master/Rcode/4b_EcologicalRegression_Temporal.R)
+-   [**4b_EcologicalRegression_Temporal.R**](https://github.com/spatialstatisticsupna/Suicides_Spain/blob/main/Rcode/4b_EcologicalRegression_Temporal.R)
 
     Fits ecological regression model under the simplified spatial+ appproach to address confounding for temporal covariates.
     
